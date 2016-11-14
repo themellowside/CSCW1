@@ -26,7 +26,7 @@ public class myRandom {
         //if it's odd
             //check it's probably prime, return if true
             //if it's not probably prime, add 2, repeat
-        System.out.println (randomPrime + " " + randomPrime.bitLength());
+        //System.out.println (randomPrime + " " + randomPrime.bitLength());
 
         return randomPrime;
 
