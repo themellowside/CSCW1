@@ -21,8 +21,8 @@ public class RSAUser {
 
         BigInteger p = myRandom.randomPrime(bitLength);
         BigInteger q = myRandom.randomPrime(bitLength);
-        System.out.println("P: " + p + "Bitlength: " + p.bitLength());
-        System.out.println("Q: " + q + "Bitlength: " + q.bitLength());
+        System.out.println("P: " + p + " Bitlength: " + p.bitLength());
+        System.out.println("Q: " + q + " Bitlength: " + q.bitLength());
         //calculate n from p and q
         //n is the modulus for the public and private keys
         setup(p, q);
@@ -88,6 +88,13 @@ public class RSAUser {
         return new String(msg.toByteArray());
     }
 
+    public static String decrypt(String c, BigInteger[] privKey){
+        BigInteger ctxt = new BigInteger(c);
+        //message = ciphertext^d mod n
+        BigInteger msg = ctxt.modPow(privKey[0], privKey[1]);
+        //convert biginteger to string - has to be through bytearray or it's just going to print numbers instead of original message
+        return new String(msg.toByteArray());
+    }
 
 
     public BigInteger[] pubKey(){

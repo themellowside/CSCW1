@@ -3,8 +3,8 @@ import java.math.BigInteger;
 public class RSADemonstration {
 
     public static void main(String[] args) {
-        simpleExample();
-
+        //simpleExample();
+        hackedExample();
     }
 
 
@@ -38,6 +38,36 @@ public class RSADemonstration {
         //this will demonstrate an example in which charlie may use attack methods to break the encryption of the message.
         //methods covered here will be a brute-force attack and an impostor attack.
         System.out.println("In this example, Charlie will attempt to access the message Alice is sending to Bob.");
+        System.out.println("Alice and Bob communicate as usual, generating their private and public keys and sharing them.");
+        System.out.println("Only this time, Charlie is in the middle, and able to intercept their communications.");
+        System.out.println("Generating Alice's public/private keys:");
+        RSAUser alice = new RSAUser(12);
+        System.out.println("Generating Bob's public/private keys:");
+
+        RSAUser bob = new RSAUser(12);
+
+        System.out.println("Charlie now has access to the public key of Bob, and when Alice tries to send the message: ");
+        String myString = "Bob";
+
+        System.out.println(myString);
+        System.out.println("Charlie can now attempt to guess the value contained in the data.");
+        System.out.println("Because the message being sent is very small, and is not padded, a simple guessing brute-force can be performed.");
+        String enc = RSAUser.encrypt(myString, bob.pubKey());
+        BigInteger privKey[] = bob.pubKey();
+        privKey[0] = BigInteger.valueOf(3);
+        String bruteForce = RSAUser.decrypt(enc, privKey);
+        int tries = 1;
+        while(!bruteForce.equals(myString)){
+            privKey[0] = privKey[0].add(BigInteger.valueOf(2));
+            bruteForce = RSAUser.decrypt(enc, privKey);
+            tries ++;
+        }
+
+
+
+        System.out.println("Charlie manages to guess: \"" + bruteForce + "\" in " + tries + " tries");
+        System.out.println("When his method is by guessing every odd number from 3 onwards");
+
         //given the public key of the recipient we want to be able to brute-force the answer from the public key
         //we do this by guessing n?
 
