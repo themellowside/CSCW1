@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="814b5e42-824e-4ea3-a668-3eeaa401df5e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/CSCW1/RSADemonstration.class" afterPath="$PROJECT_DIR$/out/production/CSCW1/RSADemonstration.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/CSCW1/myRandom.class" afterPath="$PROJECT_DIR$/out/production/CSCW1/myRandom.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RSADemonstration.java" afterPath="$PROJECT_DIR$/src/RSADemonstration.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/myRandom.java" afterPath="$PROJECT_DIR$/src/myRandom.java" />
     </list>
     <ignored path="CSCW1.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,8 +32,8 @@
       <file leaf-file-name="RSADemonstration.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/RSADemonstration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="4.334501">
-              <caret line="165" column="78" selection-start-line="165" selection-start-column="78" selection-end-line="165" selection-end-column="78" />
+            <state vertical-scroll-proportion="-0.05078809">
+              <caret line="36" column="26" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -710,7 +707,7 @@
       <workItem from="1478709766294" duration="12995000" />
       <workItem from="1478769605717" duration="10403000" />
       <workItem from="1478960040717" duration="5833000" />
-      <workItem from="1479084004450" duration="13406000" />
+      <workItem from="1479084004450" duration="13732000" />
     </task>
     <task id="LOCAL-00001" summary="Testing IntelliJ vcs">
       <created>1479084392333</created>
@@ -742,11 +739,17 @@
       <option name="project" value="LOCAL" />
       <updated>1479146567997</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Add state control and rng test method">
+      <created>1479148832803</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1479148832803</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50034000" />
+    <option name="totallyTimeSpent" value="50360000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="22" width="1680" height="1024" extended-state="6" />
@@ -822,7 +825,8 @@
     <MESSAGE value="Complete simple bruteforce method&#10;" />
     <MESSAGE value="Complete prime factorisation brute force algorithm&#10;Add more explanatory UI text&#10;" />
     <MESSAGE value="Add psrng: lcr generator" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add psrng: lcr generator" />
+    <MESSAGE value="Add state control and rng test method" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add state control and rng test method" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1211,8 +1215,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/RSADemonstration.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="4.334501">
-          <caret line="165" column="78" selection-start-line="165" selection-start-column="78" selection-end-line="165" selection-end-column="78" />
+        <state vertical-scroll-proportion="-0.05078809">
+          <caret line="36" column="26" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

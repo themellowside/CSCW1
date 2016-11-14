@@ -41,6 +41,10 @@ public class RSADemonstration {
             } else if (in == 3) {
                 factoringBruteForce();
             } else if (in == 4) {
+            } else if (in == 5) {
+            } else if (in == 6) {
+                testRNG();
+            } else if (in == 7) {
 
             } else if (in == 0) {
                 System.out.println("Exiting.");
