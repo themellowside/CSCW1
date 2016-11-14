@@ -16,6 +16,10 @@ public class myRandom {
     private long count;
     private long otherCount;
 
+    myRandom(){
+        count = 987654;
+    }
+
     public static BigInteger randomPrime(int bitLength) {
         //generate a random 512 bit integer
         BigInteger randomPrime = randomBigInt(bitLength);
@@ -56,11 +60,11 @@ public class myRandom {
 
     public long lcg(long mod) {
         long seed = System.currentTimeMillis();
-        count  ++ ;
+        count  += 1 ;
 
         otherCount = seed % count;
 
-        return(seed*count+otherCount)%mod;
+        return(seed*count+ otherCount)%mod;
 
     }
 }

@@ -1,12 +1,38 @@
+import com.sun.tools.doclets.internal.toolkit.util.DocFinder;
+
 import java.math.BigInteger;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class RSADemonstration {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        /*while(true) {
-            int in = input.nextInt();
+        while(true) {
+
+            System.out.println("Enter a number corresponding to the following optons: \n" +
+                    "1 : simple example of RSA encryption on a string\n" +
+                    "2 : simple example of RSA brute-force attack\n" +
+                    "3 : brute-force attack using factorisation against RSA\n" +
+                    "4 : enter your own parameters to test RSA\n" +
+                    "5 : enter your own parameters to test brute force\n" +
+                    "WARNING: only completes in sensible amounts of time with < 8 characters\n" +
+                    "6: test random number generator (modified lcr method) for ints between 0 and 9 over a million iterations\n" +
+                    "0 : exit");
+            boolean valid = false;
+            int in = 0;
+            while(!valid) {
+                try {
+                    System.out.println("Choose your option: ");
+                    in = input.nextInt();
+                    valid = true;
+                }catch (InputMismatchException e){
+                    System.out.println("Please enter a valid input");
+                    in = 0;
+                    valid = false;
+                    input = new Scanner(System.in);
+                }
+            }
 
             if (in == 1) {
                 simpleExample();
@@ -17,21 +43,30 @@ public class RSADemonstration {
             } else if (in == 4) {
 
             } else if (in == 0) {
+                System.out.println("Exiting.");
                 break;
 
+            } else {
+                System.out.println("Please enter a valid input.");
             }
-        }*/
-        myRandom mr = new myRandom();
-        long total = 0;
-        for(int i = 0; i < 1000000; i++) {
-
-            total += (mr.lcg(10));
         }
-        System.out.print((float)total/1000000);
 
     }
 
-
+    public static void testRNG(){
+        myRandom mr = new myRandom();
+        int[] counts = new int[10];
+        long total = 0;
+        for(int i = 0; i < 1000000; i++) {
+            int j = (int) mr.lcg(10);
+            counts[j] ++;
+            total += (j);
+        }
+        System.out.println((float)total/1000000);
+        for(int i = 0; i < 10; i++) {
+            System.out.println(i + " " + counts[i]);
+        }
+    }
 
     public static void simpleExample(){
         String myString = "Hello Bob, it's Alice here! Just messaging to let you know that my implementation is working.";
