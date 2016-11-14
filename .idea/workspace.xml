@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="814b5e42-824e-4ea3-a668-3eeaa401df5e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/CSCW1/myRandom.class" afterPath="$PROJECT_DIR$/out/production/CSCW1/myRandom.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/MyMaths.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/CSCW1/RSADemonstration.class" afterPath="$PROJECT_DIR$/out/production/CSCW1/RSADemonstration.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/CSCW1/RSAUser.class" afterPath="$PROJECT_DIR$/out/production/CSCW1/RSAUser.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RSADemonstration.java" afterPath="$PROJECT_DIR$/src/RSADemonstration.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RSAUser.java" afterPath="$PROJECT_DIR$/src/RSAUser.java" />
     </list>
     <ignored path="CSCW1.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,8 +35,8 @@
       <file leaf-file-name="RSADemonstration.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/RSADemonstration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.51508623">
-              <caret line="58" column="22" selection-start-line="58" selection-start-column="22" selection-end-line="58" selection-end-column="22" />
+            <state vertical-scroll-proportion="0.4202586">
+              <caret line="35" column="29" selection-start-line="35" selection-start-column="29" selection-end-line="35" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -45,7 +46,7 @@
         <entry file="file://$PROJECT_DIR$/src/RSAUser.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="39" column="10" selection-start-line="39" selection-start-column="10" selection-end-line="39" selection-end-column="10" />
+              <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
               <folding>
                 <element signature="e#850#851#0" expanded="true" />
                 <element signature="e#877#878#0" expanded="true" />
@@ -68,7 +69,17 @@
         <entry file="file://$PROJECT_DIR$/src/MillerRabin.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="56" column="21" selection-start-line="56" selection-start-column="21" selection-end-line="56" selection-end-column="21" />
+              <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MyMaths.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MyMaths.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -119,6 +130,7 @@
         <option value="$PROJECT_DIR$/src/MillerRabin.java" />
         <option value="$PROJECT_DIR$/src/myRandom.java" />
         <option value="$PROJECT_DIR$/src/RSAUser.java" />
+        <option value="$PROJECT_DIR$/src/MyMaths.java" />
         <option value="$PROJECT_DIR$/src/RSADemonstration.java" />
       </list>
     </option>
@@ -220,6 +232,9 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1010" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RunManager" selected="Application.PrimalityTestTest">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -690,7 +705,7 @@
       <workItem from="1478709766294" duration="12995000" />
       <workItem from="1478769605717" duration="10403000" />
       <workItem from="1478960040717" duration="5833000" />
-      <workItem from="1479084004450" duration="5481000" />
+      <workItem from="1479084004450" duration="8884000" />
     </task>
     <task id="LOCAL-00001" summary="Testing IntelliJ vcs">
       <created>1479084392333</created>
@@ -704,11 +719,17 @@
       <option name="project" value="LOCAL" />
       <updated>1479131006457</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Complete simple bruteforce method&#10;">
+      <created>1479136301478</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1479136301478</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42109000" />
+    <option name="totallyTimeSpent" value="45512000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="22" width="1680" height="1024" extended-state="6" />
@@ -781,7 +802,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Testing IntelliJ vcs" />
     <MESSAGE value="Adding scenario method, starting brute-force method 1&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding scenario method, starting brute-force method 1&#10;" />
+    <MESSAGE value="Complete simple bruteforce method&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Complete simple bruteforce method&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1094,6 +1116,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/MillerRabin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/TODO">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1102,11 +1132,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MillerRabin.java">
+    <entry file="file://$PROJECT_DIR$/src/RSAUser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="56" column="21" selection-start-line="56" selection-start-column="21" selection-end-line="56" selection-end-column="21" />
-          <folding />
+          <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+          <folding>
+            <element signature="e#850#851#0" expanded="true" />
+            <element signature="e#877#878#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1118,21 +1151,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/RSAUser.java">
+    <entry file="file://$PROJECT_DIR$/src/MyMaths.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="39" column="10" selection-start-line="39" selection-start-column="10" selection-end-line="39" selection-end-column="10" />
-          <folding>
-            <element signature="e#850#851#0" expanded="true" />
-            <element signature="e#877#878#0" expanded="true" />
-          </folding>
+          <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/RSADemonstration.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.51508623">
-          <caret line="58" column="22" selection-start-line="58" selection-start-column="22" selection-end-line="58" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.4202586">
+          <caret line="35" column="29" selection-start-line="35" selection-start-column="29" selection-end-line="35" selection-end-column="29" />
           <folding />
         </state>
       </provider>
@@ -1140,9 +1170,80 @@
   </component>
   <component name="masterDetails">
     <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>CSCW1</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
       <state key="ProjectJDKs.UI">
         <settings>
           <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
           <splitter-proportions>
             <option name="proportions">
               <list>

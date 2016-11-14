@@ -3,8 +3,9 @@ import java.math.BigInteger;
 public class RSADemonstration {
 
     public static void main(String[] args) {
-        //simpleExample();
-        hackedExample();
+        simpleExample();
+        simpleBruteForce();
+        factoringBruteForce();
     }
 
 
@@ -32,19 +33,25 @@ public class RSADemonstration {
         System.out.println("Then she sends it to Bob, who is able to decrypt it with his private key:");
         String m = bob.decrypt(c);
         System.out.println(m);
+        System.out.println();
+
     }
 
-    public static void hackedExample(){
+    public static void simpleBruteForce(){
         //this will demonstrate an example in which charlie may use attack methods to break the encryption of the message.
         //methods covered here will be a brute-force attack and an impostor attack.
         System.out.println("In this example, Charlie will attempt to access the message Alice is sending to Bob.");
+        System.out.println("In this example Charlie has no common sense, and wanted to calculate the private key by simply checking every odd value.");
         System.out.println("Alice and Bob communicate as usual, generating their private and public keys and sharing them.");
         System.out.println("Only this time, Charlie is in the middle, and able to intercept their communications.");
         System.out.println("Generating Alice's public/private keys:");
         RSAUser alice = new RSAUser(12);
+        System.out.println();
+
         System.out.println("Generating Bob's public/private keys:");
 
         RSAUser bob = new RSAUser(12);
+        System.out.println();
 
         System.out.println("Charlie now has access to the public key of Bob, and when Alice tries to send the message: ");
         String myString = "Bob";
@@ -67,9 +74,49 @@ public class RSADemonstration {
 
         System.out.println("Charlie manages to guess: \"" + bruteForce + "\" in " + tries + " tries");
         System.out.println("When his method is by guessing every odd number from 3 onwards");
+        System.out.println("\n\n");
 
         //given the public key of the recipient we want to be able to brute-force the answer from the public key
         //we do this by guessing n?
+
+    }
+
+    public static void factoringBruteForce(){
+        System.out.println("Charlie will now attempt to guess Alice's message to Bob by factoring n until he discovers p and q for a small message.");
+        System.out.println("This is significantly faster than simply bruteforce guessing every possible value that d might be for the private key, \n as p and q will be far smaller than the potential value of the private key.");
+        System.out.println("However, it is still significantly slow and only a worthwhile idea for relatively small values of p and q");
+        String message = "Bob";
+
+        System.out.println("Generating Alice's public/private keys:");
+        RSAUser alice = new RSAUser(12);
+        System.out.println();
+        System.out.println("Generating Bob's public/private keys:");
+        RSAUser bob = new RSAUser(12);
+        System.out.println();
+
+        String cipherText = alice.encrypt(message, bob.pubKey());
+
+        BigInteger n = bob.pubKey()[1];
+        BigInteger cq = BigInteger.valueOf(3);
+        int count = 1;
+        while(!n.mod(cq).equals(BigInteger.ZERO)) {
+            cq = cq.add(BigInteger.valueOf(2));
+            count ++;
+        }
+        BigInteger p = n.divide(cq);
+        System.out.println("Alice wishes to send the message: " + message + " to Bob.");
+        System.out.println("Alice encrypts it, resulting in the cipherText:");
+        System.out.println(cipherText);
+        System.out.println();
+        System.out.println("Charlie guessed the generating factors: "+ p +" "+ cq + " in " + count + " tries");
+
+        BigInteger totient = p.subtract(BigInteger.ONE).multiply( cq.subtract(BigInteger.ONE) );
+        System.out.println("Charlie then calculates the totient, and then the private key d");
+        System.out.println("As the modular inverse of the public key with respect to the totient provides the private key");
+        BigInteger d = bob.pubKey()[0].modInverse(totient);
+        BigInteger[] privKey = {d, n};
+        System.out.println("Charlie manages to extract the message: " + RSAUser.decrypt(cipherText, privKey));
+
 
     }
 
