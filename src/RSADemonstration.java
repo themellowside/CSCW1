@@ -1,11 +1,34 @@
 import java.math.BigInteger;
+import java.util.Scanner;
 
 public class RSADemonstration {
 
     public static void main(String[] args) {
-        simpleExample();
-        simpleBruteForce();
-        factoringBruteForce();
+        Scanner input = new Scanner(System.in);
+        /*while(true) {
+            int in = input.nextInt();
+
+            if (in == 1) {
+                simpleExample();
+            } else if (in == 2) {
+                simpleBruteForce();
+            } else if (in == 3) {
+                factoringBruteForce();
+            } else if (in == 4) {
+
+            } else if (in == 0) {
+                break;
+
+            }
+        }*/
+        myRandom mr = new myRandom();
+        long total = 0;
+        for(int i = 0; i < 1000000; i++) {
+
+            total += (mr.lcg(10));
+        }
+        System.out.print((float)total/1000000);
+
     }
 
 
