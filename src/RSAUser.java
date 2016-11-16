@@ -37,7 +37,7 @@ public class RSAUser {
         setup(p, q);
     }
 
-    public void setup(BigInteger p, BigInteger q){
+    private void setup(BigInteger p, BigInteger q){
         n = p.multiply(q);
         //calculate the totient
         //
@@ -135,7 +135,7 @@ public class RSAUser {
         //else return false- sender is a fraud
     }
 
-    public String hash(String message){
+    public static String hash(String message){
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
 

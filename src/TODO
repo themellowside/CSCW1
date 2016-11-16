@@ -1,6 +1,17 @@
 TODO
 
-Implement encryption - with padding
-Implement signed messages
+Padding scheme?
+Own hashing algorithm?
+Part 2 protocol
+Random BigInteger in range generator
+Random nonce value generator
+Finish signed message demo part 1
 
+(a)  Algorithms (in flow-chart)
+(b)  Design (in block diagram or class-diagram in UML)
+(c)  Demonstration (in 5 best screen-shots)
+(d)  Discussion (including answers to any questions/problems in the Coursework assignment, your experience
+in attempt of the coursework, and full bibliography
 
+(a)  Java source codes
+(b)  executable version
