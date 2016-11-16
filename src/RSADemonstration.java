@@ -1,4 +1,3 @@
-import com.sun.tools.doclets.internal.toolkit.util.DocFinder;
 
 import java.math.BigInteger;
 import java.util.InputMismatchException;
@@ -10,7 +9,7 @@ public class RSADemonstration {
         Scanner input = new Scanner(System.in);
         while(true) {
 
-            System.out.println("Enter a number corresponding to the following optons: \n" +
+            System.out.println("Enter a number corresponding to the following options: \n" +
                     "1 : simple example of RSA encryption on a string\n" +
                     "2 : simple example of RSA brute-force attack\n" +
                     "3 : brute-force attack using factorisation against RSA\n" +

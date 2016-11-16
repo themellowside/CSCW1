@@ -102,6 +102,23 @@ public class RSAUser {
         return arr;
     }
 
+    public String signMessage(String message){
+        String sign = d.toString();
+        //hash the message
+        //raise it to the power of d(modulo n) and attach it to the message
+        //(same operation as decryption)
+        return sign;
+    }
 
+    public Boolean verifySignature(String message, String signature, BigInteger[] pk){
+        //hash the message
+        //
+        //raise the signature to e modulo n (which is the sender's public key)
+        //
+        //compare the hashed message to the signature after this operation
+        //if they're the same, return true
+        //else return false- sender is a fraud
+        return false;
+    }
 
 }
