@@ -16,7 +16,8 @@ public class RSADemonstration {
                     "4 : enter your own parameters to test RSA\n" +
                     "5 : enter your own parameters to test brute force\n" +
                     "WARNING: only completes in sensible amounts of time with < 8 characters\n" +
-                    "6: test random number generator (modified lcr method) for ints between 0 and 9 over a million iterations\n" +
+                    "6 : test random number generator (modified lcr method) for ints between 0 and 9 over a million iterations\n" +
+                    "7 : test sending a signed message to verify sender\n" +
                     "0 : exit");
             boolean valid = false;
             int in = 0;
@@ -40,7 +41,10 @@ public class RSADemonstration {
             } else if (in == 3) {
                 factoringBruteForce();
             } else if (in == 4) {
-
+            } else if (in == 5) {
+            } else if (in == 6) {
+            } else if (in == 7) {
+                testSign();
             } else if (in == 0) {
                 System.out.println("Exiting.");
                 break;
@@ -175,6 +179,24 @@ public class RSADemonstration {
         System.out.println("Charlie manages to extract the message: " + RSAUser.decrypt(cipherText, privKey));
 
 
+    }
+
+    public static void testSign(){
+        System.out.println("Setting up RSA public and private keys for Alice and Bob:");
+
+        RSAUser alice = new RSAUser(512);
+        RSAUser bob = new RSAUser(512);
+        System.out.println("Alice wants to send the following message to Bob: ");
+        String message = "HI! I'm Alice and I want to make sure you know I'm Alice.";
+        System.out.println(message);
+        System.out.println("She wants to make sure that Bob knows it's her, however.");
+        System.out.println("To do this, she creates a secure hash of her message, and raises it to the power of her private key mod n.");
+        System.out.println("She sends this, along with her encrypted message to Bob so that he can decrypt the hash by raising it to the value of her public key mod n");
+        System.out.println("Next, Bob hashes the message he has decrypted using his private key, and compares it to the hash he has from Alice.\nIf they match, it's definitely come from Alice as only she knows her private key.");
+        BigInteger signature = alice.signMessage(message);
+        signature = alice.signMessage(message);
+
+        bob.verifySignature(message, signature, alice.pubKey());
     }
 
 }

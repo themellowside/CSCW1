@@ -1,4 +1,7 @@
+import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * Created by tom on 09/10/2016.
@@ -102,23 +105,46 @@ public class RSAUser {
         return arr;
     }
 
-    public String signMessage(String message){
-        String sign = d.toString();
+    public BigInteger signMessage(String message){
+        String hash = hash(message);
         //hash the message
         //raise it to the power of d(modulo n) and attach it to the message
         //(same operation as decryption)
-        return sign;
+        BigInteger hashBytes = new BigInteger(hash.getBytes());
+        return hashBytes.modPow(d, n);
     }
 
-    public Boolean verifySignature(String message, String signature, BigInteger[] pk){
+    public Boolean verifySignature(String message, BigInteger signature, BigInteger[] pk){
         //hash the message
         //
         //raise the signature to e modulo n (which is the sender's public key)
         //
+        
+        String messageHash = hash(message);
+
+        BigInteger sigHash = signature.modPow(pk[0], pk[1]);
+
+        if(sigHash.equals(new BigInteger(messageHash.getBytes()))){
+            return true;
+        }else{
+            return false;
+        }
+
         //compare the hashed message to the signature after this operation
         //if they're the same, return true
         //else return false- sender is a fraud
-        return false;
+    }
+
+    public String hash(String message){
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+
+            md.update(message.getBytes("UTF-8")); // Change this to "UTF-16" if needed
+            byte[] hash = md.digest();
+            return new String(hash);
+        }catch(Exception e){
+            return null;
+        }
     }
 
 }
