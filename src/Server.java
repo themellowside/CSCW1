@@ -17,31 +17,32 @@ public class Server extends RSAUser {
     Server(int l){
         super(l);
     }
-    public void addUser(Pair<String, BigInteger[]> user){
+
+    public void addUser(String name, BigInteger[] user){
         //adds a user to the servers list of domains, user represented by their public key and their address
-        pkeys.add(user);
+        pkeys.add(new Pair<>(name, user));
     }
 
-    public Pair<String[], BigInteger[]> getUserPKey(String name){
-        //returns a user and a signature of the username
-        for(Pair<String, BigInteger[]> user : pkeys){
-            if(user.getKey().equals(name)){
-                Pair<String[], BigInteger[]> u;
-                String[] signedUser = new String[2];
-                signedUser[0] = user.getKey();
-                signedUser[1] = signMessage(signedUser[0]).toString();
+    public Pair<Object[], BigInteger[]> getUserPKey(String name, BigInteger signature, BigInteger[] senderPKey){
+        //user sends a request for the public key of user name and a signature
+        //signature is a private key hash of the message sent
+        if(verifySignature(name, signature, senderPKey)) {
+            //returns a user and a signature of the username
+            for (Pair<String, BigInteger[]> user : pkeys) {
+                if (user.getKey().equals(name)) {
+                    //System.out.println(name);
+                    Pair<Object[], BigInteger[]> u;
+                    Object[] signedUser = new Object[2];
+                    signedUser[0] = user.getKey();
+                    System.out.println(signedUser[0]);
+                    signedUser[1] = signMessage(user.getKey());
 
-                u = new Pair<>(signedUser,user.getValue());
-
-                return u;
+                    u = new Pair<>(signedUser, user.getValue());
+                    return u;
+                }
             }
         }
         return null; //if user doesn't exist return null
-    }
-
-
-    public BigInteger[] getPKey(){
-        return pubKey();
     }
 
 

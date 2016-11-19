@@ -12,7 +12,6 @@ public class RSAUser {
     *
     * Further exploration:
     * Padding schemes in order to prevent insecure ciphertexts m = 0 results in c = 0 for example
-    * Signing messages in order to ensure sender is who they say they are
     *
     * */
 
@@ -114,7 +113,7 @@ public class RSAUser {
         return hashBytes.modPow(d, n);
     }
 
-    public Boolean verifySignature(String message, BigInteger signature, BigInteger[] pk){
+    public static Boolean verifySignature(String message, BigInteger signature, BigInteger[] pk){
         //hash the message
         //
         //raise the signature to e modulo n (which is the sender's public key)
@@ -123,7 +122,12 @@ public class RSAUser {
         String messageHash = hash(message);
 
         BigInteger sigHash = signature.modPow(pk[0], pk[1]);
-
+        /*
+        System.out.println();
+        System.out.println(sigHash);
+        System.out.println(new BigInteger(messageHash.getBytes()));
+        System.out.println();
+        */
         if(sigHash.equals(new BigInteger(messageHash.getBytes()))){
             return true;
         }else{
@@ -137,10 +141,13 @@ public class RSAUser {
 
     public static String hash(String message){
         try {
+
             MessageDigest md = MessageDigest.getInstance("SHA-256");
 
             md.update(message.getBytes("UTF-8")); // Change this to "UTF-16" if needed
             byte[] hash = md.digest();
+            //System.out.println("printing message " + message + " hash");
+            //System.out.println(new String(hash));
             return new String(hash);
         }catch(Exception e){
             return null;

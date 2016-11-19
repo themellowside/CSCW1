@@ -200,18 +200,21 @@ public class Part1 {
 
         RSAUser alice = new RSAUser(512);
         RSAUser bob = new RSAUser(512);
+        /*
         System.out.println("Alice wants to send the following message to Bob: ");
         System.out.println(message);
         System.out.println("She wants to make sure that Bob knows it's her, however.");
         System.out.println("To do this, she creates a secure hash of her message, and raises it to the power of her private key mod n.");
         System.out.println("She sends this, along with her encrypted message to Bob so that he can decrypt the hash by raising it to the value of her public key mod n");
         System.out.println("Next, Bob hashes the message he has decrypted using his private key, and compares it to the hash he has from Alice.\nIf they match, it's definitely come from Alice as only she knows her private key.");
-        BigInteger signature = alice.signMessage(message);
-        bob.decrypt(alice.encrypt(message, bob.pubKey()));
-        bob.verifySignature(message, signature, alice.pubKey());
-        System.out.println();
+        //BigInteger signature = alice.signMessage(message);
+        //bob.decrypt(alice.encrypt(message, bob.pubKey()));
+        //bob.verifySignature(message, signature, alice.pubKey());
+        //System.out.println(bob.verifySignature(message, signature, alice.pubKey()));
+        */
+
+        System.out.println(RSAUser.verifySignature("Hello bob", alice.signMessage("Hello bob"), alice.pubKey()));
+
     }
-
-
 
 }
