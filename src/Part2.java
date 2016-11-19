@@ -47,26 +47,20 @@ public class Part2 {
             System.out.println("Server signature is correct, proceeding to validate A's nonce.");
         }
 
-        //b decrypts the message and verifies the signature
-        String aNonceValue = b.decrypt(encryptedNonceA[0]);
+        //now a sends the nonce to b
+
+        //b decrypts the message
+        String aNonceValue = b.decrypt(encryptedNonceA[0]); //decrypt nonce
         String aNonceSignature = b.decrypt(encryptedNonceA[1]);
-        if(b.validateNonce(aNonceValue, new BigInteger(aNonceSignature.getBytes()), aData.getValue())){
-            System.out.println("A's hashed nonce matches the signature, proceeding to reply");
-        }
+        //b verifies the signature
 
+        //b generates a new nonce and signature
+        //b sends the old nonce, and the new nonce signed, both encrypted, to a
+        //a decrypts the old nonce, checks it is the correct value
+        //a decrypts the new nonce, checks the signature
+        //a signs and encrypts the new nonce, and sends it to b
 
-        //b then encrypts the nonce he's worked out, a new nonce, and b's signature with a's public key, and sends it to A to validate
-        String encryptedReplyNonceA = b.encrypt(aNonceValue, aData.getValue());
-        String encryptedReplyNonceSignatureA = b.encrypt(new String(b.signMessage(aNonceValue).toByteArray()), aData.getValue());
-        String[] encryptedNonceB = b.generateNonce(aData.getValue());
-
-
-        //a decrypts all of these values, validates the signature, checks the nonce he sent originally has the same value as the nonce b decrypted,
-        //and then replies with an encrypted nonce, and a hash of that as the signature.
-
-
-        //A sends B the unencrypted nonce to prove it's been decrypted
-
+        //communication is now established
     }
 
 }
