@@ -37,7 +37,7 @@ public class Part2 {
             System.out.println("Server signature is correct, proceeding to send b a nonce.");
         }
 
-        String[] encryptedNonceA = a.generateNonce(bData.getValue());
+        Object[] encryptedNonceA = a.generateNonce(bData.getValue());
         //a now sends this to b, who decrypts both the message and the signature, but cannot validate it,
         //b proceeds to ask S for the public key of a
         Pair<Object[], BigInteger[]> aData = server.getUserPKey("Alice", b.signMessage("Alice"), b.pubKey());
@@ -50,22 +50,29 @@ public class Part2 {
         //now a sends the nonce to b
 
         //b decrypts the message
-        String aNonceValue = b.decrypt(encryptedNonceA[0]); //decrypt nonce
-        String aNonceSignature = b.decrypt(encryptedNonceA[1]);
+        String aNonceValue = b.decrypt((String)encryptedNonceA[0]); //decrypt nonce
+        String[] aNonceSignatures = (String[]) encryptedNonceA[1];
+        String aNonceSignature = "";
+        for(String s : aNonceSignatures){
+            aNonceSignature += b.decrypt(s);
+        }
+        System.out.println( aNonceSignature);
+        System.out.println( a.signMessage(aNonceValue));
+       // System.out.println("encrypted nonce is: " + encryptedNonceA[0]);
+        //System.out.println("encrypted signature is: " + encryptedNonceA[1]);
+        //System.out.println("aNonceValue is: "  + aNonceValue);
+        //System.out.println("aNonceSignature: " +new String(aNonceSignature));
 
-        System.out.println("encrypted nonce is: " + encryptedNonceA[0]);
-        System.out.println("encrypted signature is: " + encryptedNonceA[1]);
-        System.out.println("aNonceValue is: "  + aNonceValue);
-        System.out.println("aNonceSignature: " +new String(aNonceSignature));
-
-
+        //System.out.println(a.signMessage(aNonceValue));
 
 
         //b verifies the signature
-        //if(b.verifySignature(aNonceValue, new BigInteger(aNonceSignature), a.pubKey())){
-        //    System.out.println("A's signature is correct, proceeding to generate a nonce for A");
-        //}
-        //String[] encryptedNonceB = b.generateNonce(bData.getValue());
+
+        if(b.verifySignature(aNonceValue, new BigInteger(aNonceSignature), a.pubKey())){
+            System.out.println("A's signature is correct, proceeding to generate a nonce for A");
+        }
+
+        Object[] encryptedNonceB = b.generateNonce(bData.getValue());
 
 
         //b generates a new nonce and signature
