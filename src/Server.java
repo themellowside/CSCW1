@@ -45,6 +45,4 @@ public class Server extends RSAUser {
         return null; //if user doesn't exist return null
     }
 
-
-
 }

@@ -109,6 +109,7 @@ public class RSAUser {
         //hash the message
         //raise it to the power of d(modulo n) and attach it to the message
         //(same operation as decryption)
+        //System.out.println(hash);
         BigInteger hashBytes = new BigInteger(hash.getBytes());
         return hashBytes.modPow(d, n);
     }
@@ -144,7 +145,7 @@ public class RSAUser {
 
             MessageDigest md = MessageDigest.getInstance("SHA-256");
 
-            md.update(message.getBytes("UTF-8")); // Change this to "UTF-16" if needed
+            md.update(message.getBytes()); // Change this to "UTF-16" if needed
             byte[] hash = md.digest();
             //System.out.println("printing message " + message + " hash");
             //System.out.println(new String(hash));

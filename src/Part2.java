@@ -40,7 +40,7 @@ public class Part2 {
         String[] encryptedNonceA = a.generateNonce(bData.getValue());
         //a now sends this to b, who decrypts both the message and the signature, but cannot validate it,
         //b proceeds to ask S for the public key of a
-        Pair<Object[], BigInteger[]> aData = server.getUserPKey("Alice", a.signMessage("Alice"), a.pubKey());
+        Pair<Object[], BigInteger[]> aData = server.getUserPKey("Alice", b.signMessage("Alice"), b.pubKey());
         //contains b, signed b, and b's public key
         //check that the signature is correct
         if(b.verifySignature((String) aData.getKey()[0], (BigInteger) aData.getKey()[1], server.pubKey())){
@@ -52,7 +52,21 @@ public class Part2 {
         //b decrypts the message
         String aNonceValue = b.decrypt(encryptedNonceA[0]); //decrypt nonce
         String aNonceSignature = b.decrypt(encryptedNonceA[1]);
+
+        System.out.println("encrypted nonce is: " + encryptedNonceA[0]);
+        System.out.println("encrypted signature is: " + encryptedNonceA[1]);
+        System.out.println("aNonceValue is: "  + aNonceValue);
+        System.out.println("aNonceSignature: " +aNonceSignature.toString());
+
+
+
+
         //b verifies the signature
+        if(b.verifySignature(aNonceValue, new BigInteger(aNonceSignature), a.pubKey())){
+            System.out.println("A's signature is correct, proceeding to generate a nonce for A");
+        }
+        //String[] encryptedNonceB = b.generateNonce(bData.getValue());
+
 
         //b generates a new nonce and signature
         //b sends the old nonce, and the new nonce signed, both encrypted, to a
