@@ -29,17 +29,17 @@ public class Client extends RSAUser{
     }
 
     public String[] generateNonce(BigInteger[] rPubKey){
-        BigInteger nonceBigInt = myRandom.randomBigInt(64);
+        BigInteger nonceBigInt = myRandom.randomBigInt(16);
         nonce = nonceBigInt.toString();
         String message = encrypt(nonce, rPubKey);
         String signature = signMessage(nonce).toString();
-
-        System.out.println("aNonceSignature should be: " + signature);
-        System.out.println("aNonceSignature encrypted: " + encrypt(signature, rPubKey));
+        System.out.println(signature.length());
+        System.out.println("aNonceSignature should be: " + signature.substring(0, 128));
+        System.out.println("aNonceSignature encrypted: " + encrypt(signature.substring(0, 128), rPubKey));
         System.out.println("aNonceValue encrypted: " + message);
         System.out.println("aNonceValue: " + nonce);
 
-        String[] nonce = {message, encrypt(signature, rPubKey)};
+        String[] nonce = {message, encrypt(signature.substring(0, 128), rPubKey)};
         return nonce;
     }
 

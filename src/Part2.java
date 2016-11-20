@@ -56,15 +56,15 @@ public class Part2 {
         System.out.println("encrypted nonce is: " + encryptedNonceA[0]);
         System.out.println("encrypted signature is: " + encryptedNonceA[1]);
         System.out.println("aNonceValue is: "  + aNonceValue);
-        System.out.println("aNonceSignature: " +aNonceSignature.toString());
+        System.out.println("aNonceSignature: " +new String(aNonceSignature));
 
 
 
 
         //b verifies the signature
-        if(b.verifySignature(aNonceValue, new BigInteger(aNonceSignature), a.pubKey())){
-            System.out.println("A's signature is correct, proceeding to generate a nonce for A");
-        }
+        //if(b.verifySignature(aNonceValue, new BigInteger(aNonceSignature), a.pubKey())){
+        //    System.out.println("A's signature is correct, proceeding to generate a nonce for A");
+        //}
         //String[] encryptedNonceB = b.generateNonce(bData.getValue());
 
 
