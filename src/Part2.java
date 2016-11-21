@@ -72,10 +72,25 @@ public class Part2 {
             System.out.println("A's signature is correct, proceeding to generate a nonce for A");
         }
 
-        Object[] encryptedNonceB = b.generateNonce(bData.getValue());
-
-
         //b generates a new nonce and signature
+
+        Object[] encryptedNonceB = b.generateNonce(bData.getValue());
+        //b encrypts the nonce, and his decrypted message, and sends them to a with a signature
+
+        //a decrypts the nonce, signature and replied nonce, validates the signature, and then checks the replied nonce is correct
+        String bNonceValue = a.decrypt((String)encryptedNonceA[0]); //decrypt nonce
+        String[] bNonceSignatures = (String[]) encryptedNonceA[1];
+        String bNonceSignature = "";
+        for(String s : bNonceSignatures){
+            bNonceSignature += a.decrypt(s);
+        }
+
+
+        if(a.verifySignature(aNonceValue, new BigInteger(bNonceSignature), b.pubKey())){
+            System.out.println("B's signature is correct, proceeding to check nonce is correct");
+        }
+        //if nonce is correct, encrypt nonce reply and nonce reply signature and now b and a can trust one another(?)
+
         //b sends the old nonce, and the new nonce signed, both encrypted, to a
         //a decrypts the old nonce, checks it is the correct value
         //a decrypts the new nonce, checks the signature
