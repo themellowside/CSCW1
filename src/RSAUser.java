@@ -119,16 +119,19 @@ public class RSAUser {
         //
         //raise the signature to e modulo n (which is the sender's public key)
         //
-        
+        //System.out.println("Verification message, signature");
+        //System.out.println(message);
+        //System.out.println(signature);
+        //System.out.println();
         String messageHash = hash(message);
 
         BigInteger sigHash = signature.modPow(pk[0], pk[1]);
-        /*
-        System.out.println();
-        System.out.println(sigHash);
-        System.out.println(new BigInteger(messageHash.getBytes()));
-        System.out.println();
-        */
+
+        //System.out.println();
+        //System.out.println(sigHash);
+        //System.out.println(new BigInteger(messageHash.getBytes()));
+        //System.out.println();
+        //*/
         if(sigHash.equals(new BigInteger(messageHash.getBytes()))){
             return true;
         }else{
@@ -149,7 +152,12 @@ public class RSAUser {
             byte[] hash = md.digest();
             //System.out.println("printing message " + message + " hash");
             //System.out.println(new String(hash));
-            return new String(hash);
+            String hashString = new String(hash);
+            if(hashString.length() > 128){
+                return hashString.substring(0, 128);
+            }else {
+                return hashString;
+            }
         }catch(Exception e){
             return null;
         }
