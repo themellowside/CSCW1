@@ -82,33 +82,39 @@ public class Part2 {
                 System.out.println("Bobby now attempts to validate the signature.");
                 if(RSAUser.verifySignature(aNonceValue, new BigInteger(aNonceSignature), aData.getValue())){
                     System.out.println("Alice''s signature is correct, proceeding to generate a nonce to send to Alice.");
+                    System.out.println("Bobby now sends Alice a new nonce, and the value he got for decrypting hers.");
+
                     Object[] encryptedNonceB = b.generateNonce(aData.getValue());
                     //b encrypts the nonce, and his decrypted message, and sends them to a with a signature
-
                     //a decrypts the nonce, signature and replied nonce, validates the signature, and then checks the replied nonce is correct
+                    System.out.println("Alice decrypts Bobby's new nonce, signature and the old nonce.");
+
                     String bNonceValue = a.decrypt((String)encryptedNonceB[0]); //decrypt nonce
                     String[] bNonceSignatures = (String[]) encryptedNonceB[1];
                     String bNonceSignature = "";
                     for(String s : bNonceSignatures){
                         bNonceSignature += a.decrypt(s);
                     }
-
                     String encryptedReplyNonceA = RSAUser.encrypt(aNonceValue, aData.getValue());
 
-
+                    System.out.println("Alice attempts to verify B's signature");
                     if(RSAUser.verifySignature(bNonceValue, new BigInteger(bNonceSignature), bData.getValue())){
                         System.out.println("B's signature is correct, proceeding to check nonce is correct");
-                        if(a.validateNonce(encryptedReplyNonceA)){
-                            System.out.println("A's nonce matches, proceedings to send nonce back");
+                        System.out.println("Alice attempts to verify B's value of her nonce.");
+                        if(a.validateNonce(encryptedReplyNonceA)) {
+                            System.out.println("Alice's nonce matches, proceeding to send nonce back to B.");
                             String encryptedReplyNonceB = RSAUser.encrypt(bNonceValue, bData.getValue());
+                            BigInteger signedReplyNonceB = a.signMessage(bNonceValue);
                             //if nonce is correct, encrypt nonce reply and nonce reply signature and now b and a can trust one another(?)
-                            if(b.validateNonce(encryptedReplyNonceB)){
-                                System.out.println("B's nonce matches, communication is now established.");
+                            //in here alice needs to verify a signature so this still needs changing
+                            if(b.verifySignature(bNonceValue, signedReplyNonceB, aData.getValue())) {
+                                System.out.println("B's signature is correct, proceeding to check nonce value.");
+                                if (b.validateNonce(encryptedReplyNonceB)) {
+                                    System.out.println("B's nonce matches, communication is now established.");
+                                }
                             }
                         }
-
                     }
-
                 }
             }
         }
