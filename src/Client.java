@@ -51,11 +51,7 @@ public class Client extends RSAUser{
     }
 
     public boolean validateNonce(String proof){
-        if(decrypt(proof).equals(nonce)){
-            return true;
-        }else{
-            return false;
-        }
+        return decrypt(proof).equals(nonce);
     }
 
 
