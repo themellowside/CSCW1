@@ -132,11 +132,7 @@ public class RSAUser {
         //System.out.println(new BigInteger(messageHash.getBytes()));
         //System.out.println();
         //*/
-        if(sigHash.equals(new BigInteger(messageHash.getBytes()))){
-            return true;
-        }else{
-            return false;
-        }
+        return sigHash.equals(new BigInteger(messageHash.getBytes()));
 
         //compare the hashed message to the signature after this operation
         //if they're the same, return true
