@@ -68,29 +68,38 @@ public class Part2 {
 
         //b verifies the signature
 
-        if(b.verifySignature(aNonceValue, new BigInteger(aNonceSignature), a.pubKey())){
+        if(b.verifySignature(aNonceValue, new BigInteger(aNonceSignature), aData.getValue())){
             System.out.println("A's signature is correct, proceeding to generate a nonce for A");
         }
 
         //b generates a new nonce and signature
 
-        Object[] encryptedNonceB = b.generateNonce(bData.getValue());
+        Object[] encryptedNonceB = b.generateNonce(aData.getValue());
         //b encrypts the nonce, and his decrypted message, and sends them to a with a signature
 
         //a decrypts the nonce, signature and replied nonce, validates the signature, and then checks the replied nonce is correct
-        String bNonceValue = a.decrypt((String)encryptedNonceA[0]); //decrypt nonce
-        String[] bNonceSignatures = (String[]) encryptedNonceA[1];
+        String bNonceValue = a.decrypt((String)encryptedNonceB[0]); //decrypt nonce
+        String[] bNonceSignatures = (String[]) encryptedNonceB[1];
         String bNonceSignature = "";
         for(String s : bNonceSignatures){
             bNonceSignature += a.decrypt(s);
         }
 
+        String encryptedReplyNonceA = b.encrypt(aNonceValue, aData.getValue());
 
-        if(a.verifySignature(aNonceValue, new BigInteger(bNonceSignature), b.pubKey())){
+
+        if(a.verifySignature(bNonceValue, new BigInteger(bNonceSignature), bData.getValue())){
             System.out.println("B's signature is correct, proceeding to check nonce is correct");
         }
-        //if nonce is correct, encrypt nonce reply and nonce reply signature and now b and a can trust one another(?)
 
+        if(a.validateNonce(encryptedReplyNonceA)){
+            System.out.println("A's nonce matches, proceedings to send nonce back");
+        }
+        String encryptedReplyNonceB = a.encrypt(bNonceValue, bData.getValue());
+        //if nonce is correct, encrypt nonce reply and nonce reply signature and now b and a can trust one another(?)
+        if(b.validateNonce(encryptedReplyNonceB)){
+            System.out.println("B's nonce matches, communication is now established.");
+        }
         //b sends the old nonce, and the new nonce signed, both encrypted, to a
         //a decrypts the old nonce, checks it is the correct value
         //a decrypts the new nonce, checks the signature

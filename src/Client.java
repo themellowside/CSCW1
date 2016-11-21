@@ -50,15 +50,9 @@ public class Client extends RSAUser{
         return nonce;
     }
 
-    public boolean validateNonce(String proof, BigInteger signature, BigInteger[] pubKey){
-        System.out.println("validating signature: " + signature);
-        if(verifySignature(proof, signature, pubKey)) {
-
-            if (proof.equals(nonce)) {
-                return true;
-            } else {
-                return false;
-            }
+    public boolean validateNonce(String proof){
+        if(decrypt(proof).equals(nonce)){
+            return true;
         }else{
             return false;
         }
