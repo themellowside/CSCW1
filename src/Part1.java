@@ -87,8 +87,8 @@ public class Part1 {
         System.out.println("First, Alice and Bob must generate their own public and private keys- out of two large, random primes each.");
         System.out.println("");
 
-        RSAUser alice = new RSAUser(512);
-        RSAUser bob = new RSAUser(512);
+        MyRSA alice = new MyRSA(512);
+        MyRSA bob = new MyRSA(512);
         System.out.println("They keep their private keys to themselves.");
         System.out.println("Then, they each exchange each-other's public keys.");
         BigInteger[] aPubKey = alice.pubKey();
@@ -98,11 +98,11 @@ public class Part1 {
         System.out.println(message);
         System.out.println("She encrypts it: ");
 
-        String c = RSAUser.encrypt(message, bPubKey);
-        System.out.println(c);
+        BigInteger[] c = MyRSA.encrypt(MyRSA.messageToBigInt(message), bPubKey);
+        System.out.println(MyRSA.outToString(c));
 
         System.out.println("Then she sends it to Bob, who is able to decrypt it with his private key to get:");
-        String m = bob.decrypt(c);
+        String m = MyRSA.outToString(bob.decrypt(c));
         System.out.println(m);
         System.out.println();
 
@@ -116,11 +116,11 @@ public class Part1 {
         System.out.println("Alice and Bob communicate as usual, generating their private and public keys and sharing them.");
         System.out.println("Only this time, Charlie is in the middle, and able to intercept their communications.");
         System.out.println("Generating Alice's public/private keys:");
-        RSAUser alice = new RSAUser(message.length()*4);
+        MyRSA alice = new MyRSA(8);
         System.out.println();
         System.out.println("Generating Bob's public/private keys:");
 
-        RSAUser bob = new RSAUser(message.length()*4);
+        MyRSA bob = new MyRSA(8);
         System.out.println();
 
         System.out.println("Charlie now has access to the public key of Bob, and when Alice tries to send the message: ");
@@ -129,14 +129,14 @@ public class Part1 {
         System.out.println("Charlie can now attempt to guess the value contained in the data.");
         System.out.println("Because the message being sent is very small, and is not padded, a simple guessing brute-force can be performed.");
 
-        String enc = RSAUser.encrypt(message, bob.pubKey());
+        BigInteger[] enc = MyRSA.encrypt(MyRSA.messageToBigInt(message), bob.pubKey());
         BigInteger privKey[] = bob.pubKey();
         privKey[0] = BigInteger.valueOf(3);
-        String bruteForce = RSAUser.decrypt(enc, privKey);
+        BigInteger[] bruteForce = MyRSA.decrypt(enc, privKey);
         int tries = 1;
-        while(!bruteForce.equals(message) || tries < 200000){
+        while(!MyRSA.outToString(bruteForce).equals(message) || tries < 200000){
             privKey[0] = privKey[0].add(BigInteger.valueOf(2));
-            bruteForce = RSAUser.decrypt(enc, privKey);
+            bruteForce = MyRSA.decrypt(enc, privKey);
 
             tries ++;
 
@@ -144,7 +144,7 @@ public class Part1 {
 
 
 
-        System.out.println("Charlie manages to guess: \"" + bruteForce + "\" in " + tries + " tries");
+        System.out.println("Charlie manages to guess: \"" + MyRSA.outToString(bruteForce) + "\" in " + tries + " tries");
         System.out.println("When his method is by guessing every odd number from 3 onwards");
         System.out.println("\n\n");
 
@@ -159,13 +159,13 @@ public class Part1 {
         System.out.println("However, it is still significantly slow and only a worthwhile idea for relatively small values of p and q");
 
         System.out.println("Generating Alice's public/private keys:");
-        RSAUser alice = new RSAUser(message.length() * 4);
+        MyRSA alice = new MyRSA(message.length() * 4);
         System.out.println();
         System.out.println("Generating Bob's public/private keys:");
-        RSAUser bob = new RSAUser(message.length() * 4);
+        MyRSA bob = new MyRSA(message.length() * 4);
         System.out.println();
 
-        String cipherText = RSAUser.encrypt(message, bob.pubKey());
+        BigInteger[] cipherText = MyRSA.encrypt(MyRSA.messageToBigInt(message), bob.pubKey());
 
         BigInteger n = bob.pubKey()[1];
         BigInteger cq = BigInteger.valueOf(3);
@@ -177,7 +177,7 @@ public class Part1 {
         BigInteger p = n.divide(cq);
         System.out.println("Alice wishes to send the message: " + message + " to Bob.");
         System.out.println("Alice encrypts it, resulting in the cipherText:");
-        System.out.println(cipherText);
+        System.out.println(MyRSA.outToString(cipherText));
         System.out.println();
         System.out.println("Charlie guessed the generating factors: "+ p +" "+ cq + " in " + count + " tries");
 
@@ -190,7 +190,7 @@ public class Part1 {
 
         System.out.println("Calculated private key exponent d: " + d);
         BigInteger[] privKey = {d, n};
-        System.out.println("Charlie manages to extract the message: " + RSAUser.decrypt(cipherText, privKey));
+        System.out.println("Charlie manages to extract the message: " + MyRSA.outToString(MyRSA.decrypt(cipherText, privKey)));
         System.out.println();
 
     }
@@ -198,22 +198,22 @@ public class Part1 {
     public static void testSign(String message){
         System.out.println("Setting up RSA public and private keys for Alice and Bob:");
 
-        RSAUser alice = new RSAUser(512);
-        RSAUser bob = new RSAUser(512);
-        /*
+        MyRSA alice = new MyRSA(512);
+        MyRSA bob = new MyRSA(512);
+
         System.out.println("Alice wants to send the following message to Bob: ");
         System.out.println(message);
         System.out.println("She wants to make sure that Bob knows it's her, however.");
         System.out.println("To do this, she creates a secure hash of her message, and raises it to the power of her private key mod n.");
         System.out.println("She sends this, along with her encrypted message to Bob so that he can decrypt the hash by raising it to the value of her public key mod n");
         System.out.println("Next, Bob hashes the message he has decrypted using his private key, and compares it to the hash he has from Alice.\nIf they match, it's definitely come from Alice as only she knows her private key.");
-        //BigInteger signature = alice.signMessage(message);
-        //bob.decrypt(alice.encrypt(message, bob.pubKey()));
-        //bob.verifySignature(message, signature, alice.pubKey());
-        //System.out.println(bob.verifySignature(message, signature, alice.pubKey()));
-        */
+        BigInteger[] signature = alice.signMessage(message);
+        bob.decrypt(alice.encrypt(MyRSA.messageToBigInt(message), bob.pubKey()));
+        bob.verifySignature(message, signature, alice.pubKey());
+        System.out.println(bob.verifySignature(message, signature, alice.pubKey()));
 
-        System.out.println(RSAUser.verifySignature("Hello bob", alice.signMessage("Hello bob"), alice.pubKey()));
+        System.out.println("Bob checks if they match: ");
+        System.out.println(MyRSA.verifySignature("Hello bob", alice.signMessage("Hello bob"), alice.pubKey()));
 
     }
 

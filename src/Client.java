@@ -3,7 +3,7 @@ import java.math.BigInteger;
 /**
  * Created by tom on 17/11/2016.
  */
-public class Client extends RSAUser{
+public class Client extends MyRSA{
     private String name;
     private String nonce;
     //class to wrap the demonstration and make it a little easier
@@ -31,7 +31,7 @@ public class Client extends RSAUser{
     public Object[] generateNonce(BigInteger[] rPubKey){
         BigInteger nonceBigInt = myRandom.randomBigInt(16);
         nonce = nonceBigInt.toString();
-        String message = encrypt(nonce, rPubKey);
+        BigInteger[] message = encrypt(messageToBigInt(nonce), rPubKey);
         String signature = signMessage(nonce).toString();
         //System.out.println(signature.length());
         //System.out.println("aNonceSignature should be: " + signature.substring(0, 128));
@@ -46,7 +46,7 @@ public class Client extends RSAUser{
                 encSig[i] = encrypt(signature.substring(i * 128), rPubKey);
             }
         }
-        Object[] nonce = {message, encSig};
+        BigInteger[][] nonce = {message, encSig};
         return nonce;
     }
 

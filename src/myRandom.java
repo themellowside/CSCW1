@@ -57,15 +57,7 @@ public class myRandom {
 
     }
 
-    public static BigInteger randomBigInt(BigInteger start, BigInteger end){
-        BigInteger gen = BigInteger.ONE;
 
-        while(gen.compareTo(start) < 0  || gen.compareTo(end) > 0){
-            gen = randomBigInt(end.bitLength());
-        }
-
-        return gen;
-    }
 
 
     public long lcg(long mod) {
@@ -78,7 +70,4 @@ public class myRandom {
 
     }
 
-    public long generateNonce(){
-        return 0;
-    }
 }
