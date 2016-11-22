@@ -32,25 +32,18 @@ public class Client extends MyRSA{
         BigInteger nonceBigInt = myRandom.randomBigInt(16);
         nonce = nonceBigInt.toString();
         BigInteger[] message = encrypt(messageToBigInt(nonce), rPubKey);
-        String signature = signMessage(nonce).toString();
+        BigInteger[] signature = signMessage(nonce);
         //System.out.println(signature.length());
         //System.out.println("aNonceSignature should be: " + signature.substring(0, 128));
         //System.out.println("aNonceSignature encrypted: " + encrypt(signature.substring(0, 128), rPubKey));
         //System.out.println("aNonceValue encrypted: " + message);
         //System.out.println("aNonceValue: " + nonce);
-        String[] encSig = new String[(int) Math.floor(signature.length()/128) + 1];
-        for(int i = 0; i <= Math.floor(signature.length()/128) ; i++){
-            if((i+1)*128 < signature.length()) {
-                encSig[i] = encrypt(signature.substring(i * 128, (i + 1) * 128), rPubKey);
-            }else {
-                encSig[i] = encrypt(signature.substring(i * 128), rPubKey);
-            }
-        }
-        BigInteger[][] nonce = {message, encSig};
+
+        BigInteger[][] nonce = {message, signature};
         return nonce;
     }
 
-    public boolean validateNonce(String proof){
+    public boolean validateNonce(BigInteger[] proof){
         return decrypt(proof).equals(nonce);
     }
 

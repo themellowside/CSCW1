@@ -2,21 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a90cfaf3-d39d-4bbf-b8f5-f4ca128b9def" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/MyRSA.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Part1test.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/CSCW1/Attacker.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/CSCW1/CWProtocol.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Attacker.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/CWProtocol.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/CSCW1/Client.class" afterPath="$PROJECT_DIR$/out/production/CSCW1/Client.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/CSCW1/Part2.class" afterPath="$PROJECT_DIR$/out/production/CSCW1/Part2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/CSCW1/RSAUser.class" afterPath="$PROJECT_DIR$/out/production/CSCW1/RSAUser.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/CSCW1/myRandom.class" afterPath="$PROJECT_DIR$/out/production/CSCW1/myRandom.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/CSCW1/Part1.class" afterPath="$PROJECT_DIR$/out/production/CSCW1/Part1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Client.java" afterPath="$PROJECT_DIR$/src/Client.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Part1.java" afterPath="$PROJECT_DIR$/src/Part1.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RSAUser.java" afterPath="$PROJECT_DIR$/src/RSAUser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/myRandom.java" afterPath="$PROJECT_DIR$/src/myRandom.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Server.java" afterPath="$PROJECT_DIR$/src/Server.java" />
     </list>
     <ignored path="CSCW1.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -47,11 +36,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Part2.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Part2.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Part2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+            <state relative-caret-position="85">
+              <caret line="52" column="57" selection-start-line="52" selection-start-column="57" selection-end-line="52" selection-end-column="57" />
               <folding />
             </state>
           </provider>
@@ -121,11 +110,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Client.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Client.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+            <state relative-caret-position="782">
+              <caret line="52" column="1" selection-start-line="52" selection-start-column="1" selection-end-line="52" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -134,8 +123,8 @@
       <file leaf-file-name="Server.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+            <state relative-caret-position="352">
+              <caret line="33" column="51" selection-start-line="33" selection-start-column="51" selection-end-line="33" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -162,12 +151,13 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/myRandom.java" />
-        <option value="$PROJECT_DIR$/src/Server.java" />
         <option value="$PROJECT_DIR$/src/RSAUser.java" />
         <option value="$PROJECT_DIR$/src/Part1test.java" />
         <option value="$PROJECT_DIR$/src/MyRSA.java" />
         <option value="$PROJECT_DIR$/src/Part1.java" />
         <option value="$PROJECT_DIR$/src/Client.java" />
+        <option value="$PROJECT_DIR$/src/Part2.java" />
+        <option value="$PROJECT_DIR$/src/Server.java" />
       </list>
     </option>
   </component>
@@ -520,6 +510,14 @@
       <option name="presentableId" value="Default" />
       <updated>1479770030494</updated>
     </task>
+    <task id="LOCAL-00001" summary="Add new RSA class because old one is ass">
+      <created>1479834654379</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1479834654379</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -589,6 +587,10 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add new RSA class because old one is ass" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add new RSA class because old one is ass" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
@@ -655,30 +657,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CWProtocol.java" />
-    <entry file="file://$PROJECT_DIR$/src/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MillerRabin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1054">
-          <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MyMaths.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Part1.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="488">
@@ -715,6 +693,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/MillerRabin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1054">
+          <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MyMaths.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Part1test.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -723,18 +717,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Part2.java">
+    <entry file="file://$PROJECT_DIR$/src/Server.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        <state relative-caret-position="352">
+          <caret line="33" column="51" selection-start-line="33" selection-start-column="51" selection-end-line="33" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Client.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        <state relative-caret-position="782">
+          <caret line="52" column="1" selection-start-line="52" selection-start-column="1" selection-end-line="52" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Part2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="52" column="57" selection-start-line="52" selection-start-column="57" selection-end-line="52" selection-end-column="57" />
           <folding />
         </state>
       </provider>

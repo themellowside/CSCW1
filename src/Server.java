@@ -6,7 +6,7 @@ import java.util.ArrayList;
 /**
  * Created by Thomas on 16/11/2016.
  */
-public class Server extends RSAUser {
+public class Server extends MyRSA {
 
     ArrayList<Pair<String, BigInteger[]>> pkeys = new ArrayList<>();
 
@@ -23,7 +23,7 @@ public class Server extends RSAUser {
         pkeys.add(new Pair<>(name, user));
     }
 
-    public Pair<Object[], BigInteger[]> getUserPKey(String name, BigInteger signature, BigInteger[] senderPKey){
+    public Pair<Object[], BigInteger[]> getUserPKey(String name, BigInteger[] signature, BigInteger[] senderPKey){
         //user sends a request for the public key of user name and a signature
         //signature is a private key hash of the message sent
         if(verifySignature(name, signature, senderPKey)) {
