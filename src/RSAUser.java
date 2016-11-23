@@ -149,7 +149,7 @@ public class RSAUser {
             //System.out.println("printing message " + message + " hash");
             //System.out.println(new String(hash));
             String hashString = new String(hash);
-            if(hashString.length() > 128){
+            if(hashString.length() >= 128){
                 return hashString.substring(0, 128);
             }else {
                 return hashString;
