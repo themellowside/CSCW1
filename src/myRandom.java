@@ -57,6 +57,10 @@ public class myRandom {
 
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> d03bcbed4d90d10e8ec2e5826b4c59902e23903f
 
 
     public long lcg(long mod) {
