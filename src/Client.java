@@ -28,7 +28,7 @@ public class Client extends MyRSA{
         this.name = name;
     }
 
-    public Object[] generateNonce(BigInteger[] rPubKey){
+    public BigInteger[][] generateNonce(BigInteger[] rPubKey){
         BigInteger nonceBigInt = myRandom.randomBigInt(16);
         nonce = nonceBigInt.toString();
         BigInteger[] message = encrypt(messageToBigInt(nonce), rPubKey);

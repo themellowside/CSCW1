@@ -38,9 +38,12 @@ public class Server extends MyRSA {
                     signedUser[1] = signMessage(user.getKey());
 
                     u = new Pair<>(signedUser, user.getValue());
+
                     return u;
                 }
             }
+        }else{
+            System.out.println("Failed to verify signature");
         }
         return null; //if user doesn't exist return null
     }

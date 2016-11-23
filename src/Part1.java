@@ -9,7 +9,6 @@ public class Part1 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         while(true) {
-
             System.out.println("Enter a number corresponding to the following options: \n" +
                     "1 : simple example of RSA encryption on a string\n" +
                     "2 : simple example of RSA brute-force attack\n" +
@@ -47,14 +46,20 @@ public class Part1 {
                 String myString = "Hello";
                 factoringBruteForce(myString);
             } else if (in == 4) {
+                System.out.println("Please enter a message: ");
+
                 simpleExample(input.nextLine());
             } else if (in == 5) {
+                System.out.println("Please enter a message: ");
+
                 factoringBruteForce(input.nextLine());
             } else if (in == 6) {
                 testRNG();
             } else if (in == 7) {
                 testSign("Hello, it's me, Alice, but I have to sign this message in case you suspect I'm not who I say I am.");
             } else if (in == 8) {
+                System.out.println("Please enter a message: ");
+
                 testSign(input.nextLine());
             } else if (in == 0) {
                 System.out.println("Exiting.");
